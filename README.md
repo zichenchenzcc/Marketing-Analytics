@@ -30,3 +30,10 @@
         import dash_core_components as dcc
 
 3.  Update the title to match the name of your website.
+
+```ruby
+
+        from dash.dependencies import Input, Output, State, MATCH
+        import dash_table
+        import dash_core_components as dcc
+```
