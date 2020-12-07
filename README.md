@@ -40,7 +40,7 @@ import dash_table
 import dash_core_components as dcc
 ```
 
-```html
+```javascript
 from dash.dependencies import Input, Output, State
 import dash_table
 import dash_core_components as dcc
