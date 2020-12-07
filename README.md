@@ -34,7 +34,7 @@ import dash_table
 import dash_core_components as dcc
 ```
 
-```python
+```json
 from dash.dependencies import Input, Output, State, MATCH,ALL
 import dash_table
 import dash_core_components as dcc
