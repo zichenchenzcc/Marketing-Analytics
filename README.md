@@ -34,7 +34,7 @@ import dash_table
 import dash_core_components as dcc
 ```
 
-```python2
+```python3
 from dash.dependencies import Input, Output, State,all
 import dash_table
 import dash_core_components as dcc
