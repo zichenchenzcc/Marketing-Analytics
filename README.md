@@ -34,6 +34,18 @@ import dash_table
 import dash_core_components as dcc
 ```
 
+```python:
+from dash.dependencies import Input, Output, State,all
+import dash_table
+import dash_core_components as dcc
+```
+
+```html:
+from dash.dependencies import Input, Output, State
+import dash_table
+import dash_core_components as dcc
+```
+
 ```js
 from dash.dependencies import Input, Output, State, MATCH,ALL
 import dash_table
