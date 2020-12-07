@@ -34,13 +34,13 @@ import dash_table
 import dash_core_components as dcc
 ```
 
-```python:
+```python
 from dash.dependencies import Input, Output, State,all
 import dash_table
 import dash_core_components as dcc
 ```
 
-```html:
+```html
 from dash.dependencies import Input, Output, State
 import dash_table
 import dash_core_components as dcc
