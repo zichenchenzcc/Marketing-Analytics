@@ -24,10 +24,12 @@
 ### Buttermilk & Bourbon
 
 1622 reviews and 4.7 rating
-![](/images/buttermilk-overview.png)
+
+![](/images/buttermilk_overview.png)
 
 Rating distribution
-![](/images/buttermilk rating.png)
+
+![](/images/buttermilk_rating.png)
 
 ###### Heading level 6
 ![Tux, the Linux mascot](/assets/images/tux.png)
