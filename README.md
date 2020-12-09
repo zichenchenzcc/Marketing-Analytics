@@ -179,7 +179,7 @@ test_score_by_model_accuracy_offset['Logistic'] = accuracy_offset(cm_log)
 test_score_by_model_accuracy['Logistic'] = accuracy(cm_log)
 ```
 
-- *3. K-Nearest Neighbor*
+- *3. K-Nearest Neighbors*
 
 
 ``` python
@@ -233,7 +233,7 @@ test_score_by_model_accuracy_offset['Naive Bayes'] = accuracy_offset(cm_nb)
 test_score_by_model_accuracy['Naive Bayes'] = accuracy(cm_nb)
 ```
 
-- *6. Decision Tree Model*
+- *6. Decision Tree Classifier*
 
 ``` python
 accuracy_tree         = []
@@ -254,7 +254,7 @@ test_score_by_model_accuracy_offset['Decision Tree'] = accuracy_offset(cm_tree)
 test_score_by_model_accuracy['Decision Tree'] = accuracy(cm_tree)
 ```
 
-- *7. Random Forest Model*
+- *7. Random Forest Classifier*
 
 ``` python
 accuracy_rf         = []
@@ -277,6 +277,32 @@ rf = RandomForestClassifier(max_depth=rf_best[0], n_estimators=rf_best[1],
 cm_rf = confusion_matrix(rf.predict(X_test),Y_test)
 test_score_by_model_accuracy_offset['Random Forest'] = accuracy_offset(cm_rf)
 test_score_by_model_accuracy['Random Forest'] = accuracy(cm_rf)
+```
+
+### **Feature importances for random forest model**
+
+- *1. Buttermilk & Bourbon*
+
+![](/images/buttermilk_rf.png)
+
+
+- *2. Osteria Nino*
+
+![](/images/osteria_rf.png)
+
+- *Python code*
+
+```python
+review_word = vectorizer.get_feature_names()
+word_index = {}
+for i in range(len(review_word)):
+    word_index[i] = review_word[i]
+    
+feature_importances_rf = pd.DataFrame(rf.feature_importances_, columns=['importance']).sort_values("importance", ascending = True)
+feature_importances_rf = feature_importances_rf.reset_index()
+feature_importances_rf['word'] = feature_importances_rf['index'].map(word_index)
+feature_importances_rf = feature_importances_rf.drop(feature_importances_rf.columns[0],axis = 1).set_index('word')
+feature_importances_rf.tail(20).plot.barh()
 ```
 
 - *Models comparison*
