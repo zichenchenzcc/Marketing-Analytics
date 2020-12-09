@@ -1,11 +1,6 @@
 # Marketing Analytics
 
-- First item
-- Second item
-- Third item
-    - Indented item
-    - Indented item
-- Fourth item
+
 
 > #### The quarterly results look great!
 >
@@ -80,7 +75,7 @@ df.to_csv('buttermilk_review.csv')
 
 ## **Run different models to predict ratings in test data**
 
-- Import tools
+- *Import tools*
 
 
 ```python
@@ -98,7 +93,7 @@ from sklearn.ensemble import RandomForestClassifier
 
 ```
 
-- Transfer and split data into training, validating, and test set
+- *Transfer and split data into training, validating, and test set*
 
 ``` python
 np.random.seed(12)
@@ -128,7 +123,7 @@ X_valid   = X[np.where(inx_valid)[0],:].toarray()
 X_test    = X[np.where(inx_test) [0],:].toarray()
 ```
 
-- Define functions to calculate accuracy score with/without offset
+- *Define functions to calculate accuracy score with/without offset*
 ``` python
 def accuracy_offset(cm):
     accuracy = (cm.diagonal(offset=-1).sum()+cm.diagonal(offset=0).sum()+cm.diagonal(offset=1).sum())/cm.sum()
@@ -137,4 +132,145 @@ def accuracy_offset(cm):
 def accuracy(cm):
     accuracy = cm.diagonal(offset=0).sum()/cm.sum()
     return accuracy
+
+test_score_by_model_accuracy_offset = {}
+test_score_by_model_accuracy = {}
+```
+
+- *1. Linear Model*
+
+``` python
+lm  = LinearRegression()
+lm.fit(X_train, Y_train)
+df['N_star_hat_reg'] = np.concatenate(
+        [
+                lm.predict(X_train),
+                lm.predict(X_valid),
+                lm.predict(X_test )
+        ]
+        ).round().astype(int)
+
+df.loc[df['N_star_hat_reg']>5,'N_star_hat_reg'] = 5
+df.loc[df['N_star_hat_reg']<1,'N_star_hat_reg'] = 1
+cm_lm = confusion_matrix(df.iloc[1476:1623]['rating'], df.iloc[1476:1623]['N_star_hat_reg'])
+test_score_by_model_accuracy_offset['Linear Model'] = accuracy_offset(cm_lm)
+test_score_by_model_accuracy['Linear Model'] = accuracy(cm_lm)
+```
+
+- *2. Logistic Model*
+
+``` python
+accuracy_log = []
+c_list = [0.01,0.1,1.0,10.0,100.0]
+for c in c_list:
+    log = LogisticRegression(multi_class="multinomial",solver="sag", 
+                             C=c, max_iter=10000).fit(X_train, Y_train)
+    cm_log = confusion_matrix(log.predict(X_valid),Y_valid)
+    accuracy_log.append(accuracy(cm_log))
+
+log = LogisticRegression(multi_class="multinomial",solver="sag", 
+                         C=c_list[np.argmax(accuracy_log)], max_iter=10000).fit(X_train, Y_train)
+cm_log = confusion_matrix(log.predict(X_test),Y_test)
+test_score_by_model_accuracy_offset['Logistic'] = accuracy_offset(cm_log)
+test_score_by_model_accuracy['Logistic'] = accuracy(cm_log)
+```
+
+- *3. K-Nearest Neighbor*
+
+
+``` python
+accuracy_knn = []
+neighbor_list = list(np.arange(2,11))
+for k in neighbor_list:
+    knn      = KNeighborsClassifier(n_neighbors=k).fit(X_train, Y_train)
+    cm_knn = confusion_matrix(knn.predict(X_valid),Y_valid)
+    accuracy_knn.append(accuracy(cm_knn))
+
+knn = KNeighborsClassifier(n_neighbors = np.argmax(accuracy_knn)+2).fit(X_train, Y_train)
+cm_knn = confusion_matrix(knn.predict(X_test),Y_test)
+test_score_by_model_accuracy_offset['KNN'] = accuracy_offset(cm_knn)
+test_score_by_model_accuracy['KNN'] = accuracy(cm_knn)
+```
+
+- *4. Support Vector Classifier*
+
+``` python
+accuracy_svc = []
+svc_c_list = [0.01,0.1,1.0,10.0,100.0]
+g_list = [0.01,0.1,1.0,10.0,100.0]
+for c in svc_c_list:
+    for g in g_list:
+        svc    = SVC(kernel="rbf",C=c,gamma=g).fit(X_train, Y_train)
+        cm_svc = confusion_matrix(svc.predict(X_valid),Y_valid)
+        accuracy_svc.append(accuracy(cm_svc))
+        
+svc_best = np.argmax(accuracy_svc)
+svc    = SVC(kernel="rbf",C=svc_c_list[svc_best // len(svc_c_list)],
+             gamma=g_list[svc_best % len(svc_c_list)]).fit(X_train, Y_train)
+cm_svc = confusion_matrix(svc.predict(X_test),Y_test)
+test_score_by_model_accuracy_offset['SVC'] = accuracy_offset(cm_svc)
+test_score_by_model_accuracy['SVC'] = accuracy(cm_svc)
+```
+
+- *5. Naive Bayes Classification*
+
+``` python
+nb                              = GaussianNB().fit(X_train, Y_train)
+df['N_star_hat_NB']             = np.concatenate(
+        [
+                nb.predict(X_train),
+                nb.predict(X_valid),
+                nb.predict(X_test)
+        ]).round().astype(int)
+df.loc[df['N_star_hat_NB']>5,'N_star_hat_NB'] = 5
+df.loc[df['N_star_hat_NB']<1,'N_star_hat_NB'] = 1
+cm_nb = confusion_matrix(df.iloc[1476:1623]['rating'], df.iloc[1476:1623]['N_star_hat_NB'])
+test_score_by_model_accuracy_offset['Naive Bayes'] = accuracy_offset(cm_nb)
+test_score_by_model_accuracy['Naive Bayes'] = accuracy(cm_nb)
+```
+
+- *6. Decision Tree Model*
+
+``` python
+accuracy_tree         = []
+criterion_chosen     = ['entropy','gini']
+max_depth_tree = list(range(2,11))
+for i in criterion_chosen:
+    for depth in max_depth_tree:
+        dtree    = tree.DecisionTreeClassifier(criterion    = i, 
+                                               max_depth    = depth).fit(X_train, Y_train)
+        cm_tree = confusion_matrix(dtree.predict(X_valid),Y_valid)
+        accuracy_tree.append(accuracy(cm_tree))
+
+tree_best = np.argmax(accuracy_tree)
+dtree    = tree.DecisionTreeClassifier(criterion= criterion_chosen[tree_best // len(max_depth_tree)], 
+                                     max_depth = max_depth_tree[tree_best % len(max_depth_tree)]).fit(X_train, Y_train)
+cm_tree = confusion_matrix(dtree.predict(X_test),Y_test)
+test_score_by_model_accuracy_offset['Decision Tree'] = accuracy_offset(cm_tree)
+test_score_by_model_accuracy['Decision Tree'] = accuracy(cm_tree)
+```
+
+- *7. Random Forest Model*
+
+``` python
+accuracy_rf         = []
+parameter_combination = []
+max_depth_rf = list(range(2,12))
+n_estimators = [10,20,30,50,100]
+max_features = [50,100,150,200,250,300,350,400,487]
+for md in max_depth_rf:
+    for n in n_estimators:
+        for mf in max_features:
+            parameter_combination.append([md,n,mf])
+            rf    = RandomForestClassifier(max_depth=md, n_estimators=n, 
+                                            max_features=mf).fit(X_train, Y_train)
+            cm_rf = confusion_matrix(rf.predict(X_valid),Y_valid)
+            accuracy_rf.append(accuracy(cm_rf))
+
+rf_best = parameter_combination[np.argmax(accuracy_rf)]
+rf = RandomForestClassifier(max_depth=rf_best[0], n_estimators=rf_best[1], 
+                            max_features=rf_best[2]).fit(X_train, Y_train)
+cm_rf = confusion_matrix(rf.predict(X_test),Y_test)
+test_score_by_model_accuracy_offset['Random Forest'] = accuracy_offset(cm_rf)
+test_score_by_model_accuracy['Random Forest'] = accuracy(cm_rf)
 ```
