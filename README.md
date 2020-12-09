@@ -14,28 +14,28 @@
 
 ## **Two restaurants for scraping**
 
-### 1. Buttermilk & Bourbon
-
-- *1622 reviews and 4.7 rating*
-
-![](/images/buttermilk_overview.png)
-
-
-- *Rating distribution*
-
-![](/images/buttermilk_rating.png)
+> ### 1. Buttermilk & Bourbon
+> 
+> - *1622 reviews and 4.7 rating*
+> 
+> ![](/images/buttermilk_overview.png)
+> 
+> 
+> - *Rating distribution*
+> 
+> ![](/images/buttermilk_rating.png)
 
 
 > ### 2. Osteria Nino
-
+> 
 > - *864 reviews and 4.2 rating*
-
+> 
 > ![](/images/osteria_overview.png)
-
-
-- *Rating distribution*
-
-![](/images/osteria_rating.png)
+> 
+> 
+> - *Rating distribution*
+> 
+> ![](/images/osteria_rating.png)
 
 
 ## **Scraping reviews and ratings**
