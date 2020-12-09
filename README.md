@@ -77,6 +77,11 @@ df.to_csv('buttermilk_review.csv')
 #df.to_csv('osteria_nino_review.csv')
 ```
 
+- *Dataframe*
+
+![](/images/data.png)
+
+
 ## **Run different models with different hyperparameters to predict ratings in test data**
 
 - *Import tools*
@@ -281,15 +286,6 @@ test_score_by_model_accuracy['Random Forest'] = accuracy(cm_rf)
 
 ### **Feature importances for random forest model**
 
-- *1. Buttermilk & Bourbon*
-
-![](/images/buttermilk_rf.png)
-
-
-- *2. Osteria Nino*
-
-![](/images/osteria_rf.png)
-
 - *Python code*
 
 ```python
@@ -305,6 +301,16 @@ feature_importances_rf = feature_importances_rf.drop(feature_importances_rf.colu
 feature_importances_rf.tail(20).plot.barh()
 ```
 
-- *Models comparison*
+- *1. Buttermilk & Bourbon*
+
+![](/images/buttermilk_rf.png)
+
+
+- *2. Osteria Nino*
+
+![](/images/osteria_rf.png)
+
+
+### **Models comparison**
 
 ![](/images/model_comparison.png)
