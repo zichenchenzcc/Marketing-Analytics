@@ -67,9 +67,9 @@ df.to_csv('buttermilk_review.csv')
 #df.to_csv('osteria_nino_review.csv')
 ```
 
-- *Dataframe*
-
-![](/images/data.png)
+> - *Dataframe*
+> 
+> ![](/images/data.png)
 
 
 ## **Run different models with different hyperparameters to predict ratings in test data**
@@ -291,16 +291,16 @@ feature_importances_rf = feature_importances_rf.drop(feature_importances_rf.colu
 feature_importances_rf.tail(20).plot.barh()
 ```
 
-- *1. Buttermilk & Bourbon*
-
-![](/images/buttermilk_rf.png)
-
-
-- *2. Osteria Nino*
-
-![](/images/osteria_rf.png)
+> - *1. Buttermilk & Bourbon*
+> 
+> ![](/images/buttermilk_rf.png)
 
 
-### **Models comparison**
+> - *2. Osteria Nino*
+> 
+> ![](/images/osteria_rf.png)
 
-![](/images/model_comparison.png)
+
+> ### **Models comparison**
+> 
+> ![](/images/model_comparison.png)
