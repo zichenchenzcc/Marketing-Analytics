@@ -12,7 +12,7 @@
 
 # OpenTable reviews scraping and rating analysis
 
-## **Two restaurant for scraping**
+## **Two restaurants for scraping**
 
 ### 1. Buttermilk & Bourbon
 
@@ -20,9 +20,11 @@
 
 ![](/images/buttermilk_overview.png)
 
+
 - *Rating distribution*
 
 ![](/images/buttermilk_rating.png)
+
 
 ### 2. Osteria Nino
 
@@ -30,9 +32,11 @@
 
 ![](/images/osteria_overview.png)
 
+
 - *Rating distribution*
 
 ![](/images/osteria_rating.png)
+
 
 ## **Scraping reviews and ratings**
 
@@ -73,7 +77,7 @@ df.to_csv('buttermilk_review.csv')
 #df.to_csv('osteria_nino_review.csv')
 ```
 
-## **Run different models to predict ratings in test data**
+## **Run different models with different hyperparameters to predict ratings in test data**
 
 - *Import tools*
 
@@ -274,3 +278,7 @@ cm_rf = confusion_matrix(rf.predict(X_test),Y_test)
 test_score_by_model_accuracy_offset['Random Forest'] = accuracy_offset(cm_rf)
 test_score_by_model_accuracy['Random Forest'] = accuracy(cm_rf)
 ```
+
+- *Models comparison*
+
+![](/images/model_comparison.png)
