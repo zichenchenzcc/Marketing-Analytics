@@ -67,6 +67,7 @@ df.to_csv('buttermilk_review.csv')
 #df.to_csv('osteria_nino_review.csv')
 ```
 
+
 > - *Dataframe*
 > 
 > ![](/images/data.png)
@@ -75,7 +76,6 @@ df.to_csv('buttermilk_review.csv')
 ## **Run different models with different hyperparameters to predict ratings in test data**
 
 - *Import tools*
-
 
 ```python
 import pandas as pd
@@ -91,6 +91,7 @@ from sklearn import tree
 from sklearn.ensemble import RandomForestClassifier
 
 ```
+
 
 - *Transfer and split data into training, validating, and test set*
 
@@ -122,6 +123,7 @@ X_valid   = X[np.where(inx_valid)[0],:].toarray()
 X_test    = X[np.where(inx_test) [0],:].toarray()
 ```
 
+
 - *Define functions to calculate accuracy score with/without offset*
 ``` python
 def accuracy_offset(cm):
@@ -135,6 +137,7 @@ def accuracy(cm):
 test_score_by_model_accuracy_offset = {}
 test_score_by_model_accuracy = {}
 ```
+
 
 - *1. Linear Model*
 
@@ -156,6 +159,7 @@ test_score_by_model_accuracy_offset['Linear Model'] = accuracy_offset(cm_lm)
 test_score_by_model_accuracy['Linear Model'] = accuracy(cm_lm)
 ```
 
+
 - *2. Logistic Model*
 
 ``` python
@@ -174,6 +178,7 @@ test_score_by_model_accuracy_offset['Logistic'] = accuracy_offset(cm_log)
 test_score_by_model_accuracy['Logistic'] = accuracy(cm_log)
 ```
 
+
 - *3. K-Nearest Neighbors*
 
 
@@ -190,6 +195,7 @@ cm_knn = confusion_matrix(knn.predict(X_test),Y_test)
 test_score_by_model_accuracy_offset['KNN'] = accuracy_offset(cm_knn)
 test_score_by_model_accuracy['KNN'] = accuracy(cm_knn)
 ```
+
 
 - *4. Support Vector Classifier*
 
@@ -211,6 +217,7 @@ test_score_by_model_accuracy_offset['SVC'] = accuracy_offset(cm_svc)
 test_score_by_model_accuracy['SVC'] = accuracy(cm_svc)
 ```
 
+
 - *5. Naive Bayes Classification*
 
 ``` python
@@ -227,6 +234,7 @@ cm_nb = confusion_matrix(df.iloc[1476:1623]['rating'], df.iloc[1476:1623]['N_sta
 test_score_by_model_accuracy_offset['Naive Bayes'] = accuracy_offset(cm_nb)
 test_score_by_model_accuracy['Naive Bayes'] = accuracy(cm_nb)
 ```
+
 
 - *6. Decision Tree Classifier*
 
@@ -248,6 +256,7 @@ cm_tree = confusion_matrix(dtree.predict(X_test),Y_test)
 test_score_by_model_accuracy_offset['Decision Tree'] = accuracy_offset(cm_tree)
 test_score_by_model_accuracy['Decision Tree'] = accuracy(cm_tree)
 ```
+
 
 - *7. Random Forest Classifier*
 
@@ -274,6 +283,7 @@ test_score_by_model_accuracy_offset['Random Forest'] = accuracy_offset(cm_rf)
 test_score_by_model_accuracy['Random Forest'] = accuracy(cm_rf)
 ```
 
+
 ### **Feature importances for random forest model**
 
 - *Python code*
@@ -290,6 +300,7 @@ feature_importances_rf['word'] = feature_importances_rf['index'].map(word_index)
 feature_importances_rf = feature_importances_rf.drop(feature_importances_rf.columns[0],axis = 1).set_index('word')
 feature_importances_rf.tail(20).plot.barh()
 ```
+
 
 > - *1. Buttermilk & Bourbon*
 > 
