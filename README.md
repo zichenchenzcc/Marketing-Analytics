@@ -1,15 +1,5 @@
 # Marketing Analytics
 
-
-
-> #### The quarterly results look great!
->
-> - Revenue was off the chart.
-> - Profits were higher than ever.
->
->  *Everything* is going according to **plan**.
->> The Witch bade her clean the pots and kettles and sweep the floor and keep the fire fed with wood.
-
 # OpenTable reviews scraping and rating analysis
 
 ## **Two restaurants for scraping**
