@@ -27,7 +27,7 @@
 
 ![](/images/buttermilk_overview.png)
 
-    - Rating distribution
+   - Rating distribution
 
 ![](/images/buttermilk_rating.png)
 
