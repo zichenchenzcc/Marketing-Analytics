@@ -21,15 +21,25 @@
 
 ## Two restaurant for scraping
 
-- ### Buttermilk & Bourbon
+### 1. Buttermilk & Bourbon
 
-    - 1622 reviews and 4.7 rating
+- 1622 reviews and 4.7 rating
 
 ![](/images/buttermilk_overview.png)
 
-   - Rating distribution
+- Rating distribution
 
 ![](/images/buttermilk_rating.png)
+
+### 2. Osteria Nino
+
+- 864 reviews and 4.2 rating
+
+![](/images/osteria_overview.png)
+
+- Rating distribution
+
+![](/images/osteria_rating.png)
 
 ###### Heading level 6
 ![Tux, the Linux mascot](/assets/images/tux.png)
