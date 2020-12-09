@@ -27,7 +27,7 @@
 ![](/images/buttermilk-overview.png)
 
 Rating distribution
-![](/images/buttermilk-rating.png)
+![](/images/buttermilk rating.png)
 
 ###### Heading level 6
 ![Tux, the Linux mascot](/assets/images/tux.png)
