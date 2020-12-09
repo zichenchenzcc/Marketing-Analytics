@@ -21,13 +21,13 @@
 
 ## Two restaurant for scraping
 
-### Buttermilk & Bourbon
+- ### Buttermilk & Bourbon
 
-1622 reviews and 4.7 rating
+    - 1622 reviews and 4.7 rating
 
 ![](/images/buttermilk_overview.png)
 
-Rating distribution
+    - Rating distribution
 
 ![](/images/buttermilk_rating.png)
 
