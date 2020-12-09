@@ -26,11 +26,11 @@
 ![](/images/buttermilk_rating.png)
 
 
-### 2. Osteria Nino
+> ### 2. Osteria Nino
 
-- *864 reviews and 4.2 rating*
+> - *864 reviews and 4.2 rating*
 
-![](/images/osteria_overview.png)
+> ![](/images/osteria_overview.png)
 
 
 - *Rating distribution*
