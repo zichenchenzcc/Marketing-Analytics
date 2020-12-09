@@ -42,21 +42,6 @@
 ## **Scraping reviews and ratings**
 
 ```python
-python
-
-```
-
-###### Heading level 6
-![Tux, the Linux mascot](/assets/images/tux.png)
-1.  Open the file.
-2.  Find the following code block on line 21:
-
-
-
-3.  Update the title to match the name of your website.
-
-
-```python
 import pandas as pd
 import re
 import time
@@ -91,4 +76,65 @@ df.columns = ['review','rating']
 df.rating = df.rating.astype('int')
 df.to_csv('buttermilk_review.csv')
 #df.to_csv('osteria_nino_review.csv')
+```
+
+## **Run different models to predict ratings in test data**
+
+- Import tools
+
+
+```python
+import pandas as pd
+import numpy as np
+from sklearn.feature_extraction.text import CountVectorizer
+from sklearn.metrics import confusion_matrix
+from sklearn.linear_model            import LinearRegression
+from sklearn.linear_model import LogisticRegression
+from sklearn.neighbors import KNeighborsClassifier
+from sklearn.svm import SVC
+from sklearn.naive_bayes import GaussianNB
+from sklearn import tree
+from sklearn.ensemble import RandomForestClassifier
+
+```
+
+- Transfer and split data into training, validating, and test set
+
+``` python
+np.random.seed(12)
+df = pd.read_csv('buttermilk_review.csv')
+df['ML_group']   = np.random.randint(100,size = df.shape[0])
+df              = df.sort_values(by='ML_group').reset_index()
+df.drop(df.columns[[0,1]],axis = 1,inplace=True)
+inx_train         = df.ML_group<80                     
+inx_valid         = (df.ML_group>=80)&(df.ML_group<90)
+inx_test          = (df.ML_group>=90)
+corpus          = df.review.to_list()
+ngram_range     = (1,1)
+max_df          = 0.85
+min_df          = 0.01
+vectorizer      = CountVectorizer(lowercase   = True,
+                                  ngram_range = ngram_range,
+                                  max_df      = max_df     ,
+                                  min_df      = min_df     );
+                                  
+X               = vectorizer.fit_transform(corpus)
+Y = df.rating
+Y_train   = df.rating[inx_train].to_list()
+Y_valid   = df.rating[inx_valid].to_list()
+Y_test    = df.rating[inx_test].to_list()
+X_train   = X[np.where(inx_train)[0],:].toarray()
+X_valid   = X[np.where(inx_valid)[0],:].toarray()
+X_test    = X[np.where(inx_test) [0],:].toarray()
+```
+
+- Define functions to calculate accuracy score with/without offset
+``` python
+def accuracy_offset(cm):
+    accuracy = (cm.diagonal(offset=-1).sum()+cm.diagonal(offset=0).sum()+cm.diagonal(offset=1).sum())/cm.sum()
+    return accuracy
+
+def accuracy(cm):
+    accuracy = cm.diagonal(offset=0).sum()/cm.sum()
+    return accuracy
 ```
