@@ -348,9 +348,11 @@ feature_importances_rf.tail(20).plot.barh()
 
   - #### **The difference between accuracy scores with and without offset is very huge. There is alswys deviation.**
 
+
 - ### **2. Compare two restaurants**
 
-  - #### **Most of the models perform better in Buttermilk & Bourbon than in Osteria Nino**
+  - #### **Most of the models perform better in Buttermilk & Bourbon than in Osteria Nino. Because Buttermilk has 80% 5-star ratings.**
+
 
 - ### **3. Compare across models**
 
