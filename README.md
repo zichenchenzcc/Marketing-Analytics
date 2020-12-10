@@ -70,7 +70,7 @@ df.to_csv('buttermilk_review.csv')
 
 > - *Dataframe*
 > 
-> ![](/images/data.png)
+> ![](/images/dataframe.png)
 
 
 ## **Run different models with different hyperparameters to predict ratings in test data**
