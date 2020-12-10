@@ -321,18 +321,18 @@ feature_importances_rf.tail(20).plot.barh()
 
 ---
 
-> - *1. Buttermilk & Bourbon*
-> 
-> ![](/images/buttermilk_rf.png)
+ - *1. Buttermilk & Bourbon*
+ 
+ ![](/images/buttermilk_rf.png)
 
 ---
 
-> - *2. Osteria Nino*
-> 
-> ![](/images/osteria_rf.png)
+ - *2. Osteria Nino*
+ 
+ ![](/images/osteria_rf.png)
 
 ---
 
-> ### **Models comparison**
-> 
-> ![](/images/model_comparison.png)
+ ### **Models comparison**
+ 
+ ![](/images/model_comparison.png)
