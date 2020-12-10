@@ -135,6 +135,7 @@ X_test    = X[np.where(inx_test) [0],:].toarray()
 ---
 
 - *Define functions to calculate accuracy score with/without offset*
+
 ``` python
 def accuracy_offset(cm):
     accuracy = (cm.diagonal(offset=-1).sum()+cm.diagonal(offset=0).sum()+cm.diagonal(offset=1).sum())/cm.sum()
