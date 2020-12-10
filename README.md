@@ -20,9 +20,7 @@
 
 ---
 
- ### 2. Osteria Nino 
- 
- ([https://www.opentable.com/osteria-nino](https://www.opentable.com/osteria-nino))
+ ### 2. Osteria Nino ### ([https://www.opentable.com/osteria-nino](https://www.opentable.com/osteria-nino))
 
  - *864 reviews and 4.2 rating*
  
