@@ -14,8 +14,8 @@
 > - *Rating distribution*
 > 
 > ![](/images/buttermilk_rating.png)
+>
 > 	---
->	
 > ### 2. Osteria Nino ([https://www.opentable.com/osteria-nino](https://www.opentable.com/osteria-nino))
 > 
 > - *864 reviews and 4.2 rating*
@@ -26,8 +26,8 @@
 > - *Rating distribution*
 > 
 > ![](/images/osteria_rating.png)
+> 	
 > 	---
-
 ## **Scraping reviews and ratings**
 
 ```python
