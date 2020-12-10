@@ -81,6 +81,12 @@ df.to_csv('buttermilk_review.csv')
 
 ---
 
+- *Use all the reviews to make a wordcloud in the shape of a cauldron*
+ 
+ ![](/images/word_cloud.png)
+ 
+---
+
 ## **Run different models with different hyperparameters to predict ratings in test data**
 
 - *Import tools*
