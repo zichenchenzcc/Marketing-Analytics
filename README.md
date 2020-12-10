@@ -1,13 +1,13 @@
-# Marketing Analytics
-
 # OpenTable reviews scraping and rating analysis
 
 ## **Two restaurants for scraping**
 
 ---
-  
+
+
  ### 1. Buttermilk & Bourbon ([https://www.opentable.com/r/buttermilk-and-bourbon-boston](https://www.opentable.com/r/buttermilk-and-bourbon-boston))
- 
+
+
  - *1622 reviews and 4.7 rating*
  
  ![](/images/buttermilk_overview.png)
@@ -19,9 +19,11 @@
  ![](/images/buttermilk_rating.png)
 
 ---
-  
+
+
  ### 2. Osteria Nino ([https://www.opentable.com/osteria-nino](https://www.opentable.com/osteria-nino))
- 
+
+
  - *864 reviews and 4.2 rating*
  
  ![](/images/osteria_overview.png)
