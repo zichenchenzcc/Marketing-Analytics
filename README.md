@@ -4,7 +4,7 @@
 
 ## **Two restaurants for scraping**
 
- 	---
+---
   
  ### 1. Buttermilk & Bourbon ([https://www.opentable.com/r/buttermilk-and-bourbon-boston](https://www.opentable.com/r/buttermilk-and-bourbon-boston))
  
@@ -12,13 +12,13 @@
  
  ![](/images/buttermilk_overview.png)
  
- 	---
+---
   
  - *Rating distribution*
  
  ![](/images/buttermilk_rating.png)
 
- 	---
+---
   
  ### 2. Osteria Nino ([https://www.opentable.com/osteria-nino](https://www.opentable.com/osteria-nino))
  
@@ -26,13 +26,13 @@
  
  ![](/images/osteria_overview.png)
  
- 	---
+---
   
  - *Rating distribution*
  
  ![](/images/osteria_rating.png)
  	
- 	---
+---
   
 ## **Scraping reviews and ratings**
 
@@ -100,6 +100,7 @@ from sklearn.ensemble import RandomForestClassifier
 
 ```
 
+---
 
 - *Transfer and split data into training, validating, and test set*
 
@@ -131,6 +132,7 @@ X_valid   = X[np.where(inx_valid)[0],:].toarray()
 X_test    = X[np.where(inx_test) [0],:].toarray()
 ```
 
+---
 
 - *Define functions to calculate accuracy score with/without offset*
 ``` python
@@ -146,6 +148,7 @@ test_score_by_model_accuracy_offset = {}
 test_score_by_model_accuracy = {}
 ```
 
+---
 
 - *1. Linear Model*
 
@@ -167,6 +170,7 @@ test_score_by_model_accuracy_offset['Linear Model'] = accuracy_offset(cm_lm)
 test_score_by_model_accuracy['Linear Model'] = accuracy(cm_lm)
 ```
 
+---
 
 - *2. Logistic Model*
 
@@ -186,6 +190,7 @@ test_score_by_model_accuracy_offset['Logistic'] = accuracy_offset(cm_log)
 test_score_by_model_accuracy['Logistic'] = accuracy(cm_log)
 ```
 
+---
 
 - *3. K-Nearest Neighbors*
 
@@ -204,6 +209,7 @@ test_score_by_model_accuracy_offset['KNN'] = accuracy_offset(cm_knn)
 test_score_by_model_accuracy['KNN'] = accuracy(cm_knn)
 ```
 
+---
 
 - *4. Support Vector Classifier*
 
@@ -225,6 +231,7 @@ test_score_by_model_accuracy_offset['SVC'] = accuracy_offset(cm_svc)
 test_score_by_model_accuracy['SVC'] = accuracy(cm_svc)
 ```
 
+---
 
 - *5. Naive Bayes Classification*
 
@@ -243,6 +250,7 @@ test_score_by_model_accuracy_offset['Naive Bayes'] = accuracy_offset(cm_nb)
 test_score_by_model_accuracy['Naive Bayes'] = accuracy(cm_nb)
 ```
 
+---
 
 - *6. Decision Tree Classifier*
 
@@ -265,6 +273,7 @@ test_score_by_model_accuracy_offset['Decision Tree'] = accuracy_offset(cm_tree)
 test_score_by_model_accuracy['Decision Tree'] = accuracy(cm_tree)
 ```
 
+---
 
 - *7. Random Forest Classifier*
 
@@ -291,6 +300,7 @@ test_score_by_model_accuracy_offset['Random Forest'] = accuracy_offset(cm_rf)
 test_score_by_model_accuracy['Random Forest'] = accuracy(cm_rf)
 ```
 
+---
 
 ### **Feature importances for random forest model**
 
@@ -309,16 +319,19 @@ feature_importances_rf = feature_importances_rf.drop(feature_importances_rf.colu
 feature_importances_rf.tail(20).plot.barh()
 ```
 
+---
 
 > - *1. Buttermilk & Bourbon*
 > 
 > ![](/images/buttermilk_rf.png)
 
+---
 
 > - *2. Osteria Nino*
 > 
 > ![](/images/osteria_rf.png)
 
+---
 
 > ### **Models comparison**
 > 
