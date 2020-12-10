@@ -340,6 +340,6 @@ feature_importances_rf.tail(20).plot.barh()
 
 ---
 
- ### **Models comparison**
+### **Models comparison**
  
  ![](/images/model_comparison.png)
