@@ -343,3 +343,19 @@ feature_importances_rf.tail(20).plot.barh()
 ### **Models comparison**
  
  ![](/images/model_comparison.png)
+ 
+- ### **1. Compare within each restaurant and focus on the accuracy score with and without the offset**
+
+  - ### **The difference between accuracy scores with and without offset is very huge. There is alswys deviation.**
+
+- ### **2. Compare two restaurants**
+
+  - ### **Most of the models perform better in Buttermilk & Bourbon than in Osteria Nino**
+
+- ### **3. Logistic regression is the best. Li**
+
+  - ### **Logistic regression is the best.**
+  
+  - ### **Linear regression is the worst in Osteria Nino, but pretty good in Buttermilk & Bourbon.**
+  
+  - ### **Naïve Bayes model does very badly in all of the four situations.**
